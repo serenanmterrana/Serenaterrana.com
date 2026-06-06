@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
 
-  // 🌍 MAP INIT
+  // 🌍 CREATE MAP
   const map = L.map('map', {
     worldCopyJump: true,
     zoomControl: true,
@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
     maxZoom: 20
   }).addTo(map);
 
-  // 📍 CUSTOM GLOWING RED PIN
+  // 📍 RED GLOWING PIN ICON (CSS-BASED)
   const redIcon = L.divIcon({
     className: 'custom-pin',
     html: `<div class="pin"></div>`,
@@ -21,37 +21,46 @@ window.addEventListener("load", function () {
     iconAnchor: [10, 10]
   });
 
-  // 🌍 FUNCTION: ADD COUNTRY
-  function addCountry(lat, lng, name, flag) {
+  // 🌍 FUNCTION TO ADD COUNTRIES
+  function addCountry(lat, lng, name, flag, link) {
     L.marker([lat, lng], { icon: redIcon })
       .addTo(map)
       .bindPopup(`
         <div style="text-align:center; min-width:120px;">
           <div style="font-size:22px;">${flag}</div>
-          <div style="margin-top:6px; font-weight:600; color:#fff;">
-            ${name}
+          <div style="margin-top:6px; font-weight:600;">
+            <a href="${link}" style="color:#fff; text-decoration:none;">
+              ${name}
+            </a>
           </div>
         </div>
       `);
   }
 
-  // 🇺🇸 NORTH & SOUTH AMERICA / EUROPE / ASIA / OCEANIA
+  // 🌍 COUNTRIES (CLICK → STORY PAGE)
 
-  addCountry(39.8, -98.5, "United States", "🇺🇸");
-  addCountry(28.3, 84.1, "Nepal", "🇳🇵");
-  addCountry(23.6, -102.5, "Mexico", "🇲🇽");
-  addCountry(60.1, 18.6, "Sweden", "🇸🇪");
-  addCountry(51.9, 19.1, "Poland", "🇵🇱");
-  addCountry(30.3, 69.3, "Pakistan", "🇵🇰");
-  addCountry(35.1, 33.4, "Cyprus", "🇨🇾");
-  addCountry(1.3, 32.2, "Uganda", "🇺🇬");
+  addCountry(39.8, -98.5, "United States", "🇺🇸", "usa.html");
+  addCountry(28.3, 84.1, "Nepal", "🇳🇵", "nepal.html");
+  addCountry(23.6, -102.5, "Mexico", "🇲🇽", "mexico.html");
+  addCountry(60.1, 18.6, "Sweden", "🇸🇪", "sweden.html");
+  addCountry(51.9, 19.1, "Poland", "🇵🇱", "poland.html");
+  addCountry(30.3, 69.3, "Pakistan", "🇵🇰", "pakistan.html");
+  addCountry(35.1, 33.4, "Cyprus", "🇨🇾", "cyprus.html");
+  addCountry(1.3, 32.2, "Uganda", "🇺🇬", "uganda.html");
 
-  // 🇮🇳 INDIA (FLAG ONLY — NO NAME)
+  // 🇮🇳 INDIA (FLAG ONLY - NO NAME)
   L.marker([20.6, 78.9], { icon: redIcon })
     .addTo(map)
-    .bindPopup(`<div style="font-size:22px;">🇮🇳</div>`);
+    .bindPopup(`
+      <div style="font-size:22px;">🇮🇳</div>
+    `);
 
-  addCountry(15.7, -90.2, "Guatemala", "🇬🇹");
-  addCountry(13.7, -88.8, "El Salvador", "🇸🇻");
-  addCountry(-9.1, -75.0, "Peru", "🇵🇪");
-  addCountry(-35
+  addCountry(15.7, -90.2, "Guatemala", "🇬🇹", "guatemala.html");
+  addCountry(13.7, -88.8, "El Salvador", "🇸🇻", "elsalvador.html");
+  addCountry(-9.1, -75.0, "Peru", "🇵🇪", "peru.html");
+  addCountry(-35.6, -71.5, "Chile", "🇨🇱", "chile.html");
+  addCountry(-38.4, -63.6, "Argentina", "🇦🇷", "argentina.html");
+  addCountry(35.9, 127.7, "South Korea", "🇰🇷", "southkorea.html");
+  addCountry(-40.9, 174.8, "New Zealand", "🇳🇿", "newzealand.html");
+
+});
