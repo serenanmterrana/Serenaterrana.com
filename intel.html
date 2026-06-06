@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serena Terrana Ministries</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Serena Terrana Ministries</div>
+
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#map-section">Mission Map</a>
+      <a href="#donate">Donate</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Go Into All The World</h1>
+      <p>Sharing the Gospel through missions, stories, and testimonies.</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Welcome to my ministry website. Here you can follow mission journeys,
+      testimonies, and see how God is working around the world.
+    </p>
+  </section>
+
+  <section id="map-section">
+    <h2>Mission Map</h2>
+
+    <!-- THIS IS REQUIRED -->
+    <div id="map"></div>
+  </section>
+
+  <section id="newsletter">
+    <h2>Stay Connected</h2>
+
+    <div class="card">
+      <p>Receive ministry updates and prayer requests.</p>
+
+      <form>
+        <input type="email" placeholder="Your email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© Serena Terrana Ministries</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Your map -->
+  <script src="map.js"></script>
+
+</body>
+</html>
