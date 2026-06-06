@@ -1,92 +1,57 @@
-const map = L.map('map', {
-  worldCopyJump: true,
-  zoomControl: true
-}).setView([20, 0], 2);
+window.addEventListener("load", function () {
 
-// 🌙 Dark cinematic map layer (better than default)
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap & CARTO',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
+  // 🌍 MAP INIT
+  const map = L.map('map', {
+    worldCopyJump: true,
+    zoomControl: true,
+    scrollWheelZoom: true
+  }).setView([20, 0], 2);
 
-//
-// 📍 CUSTOM RED ICON (cinematic pins)
-//
-const redIcon = L.icon({
-  iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers/img/marker-icon-red.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  // 🌙 CINEMATIC DARK MAP STYLE
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; Stadia Maps & OpenStreetMap',
+    maxZoom: 20
+  }).addTo(map);
 
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+  // 📍 CUSTOM GLOWING RED PIN
+  const redIcon = L.divIcon({
+    className: 'custom-pin',
+    html: `<div class="pin"></div>`,
+    iconSize: [20, 20],
+    iconAnchor: [10, 10]
+  });
 
-//
-// 🌍 COUNTRIES (clean popup = ONLY country name)
-//
+  // 🌍 FUNCTION: ADD COUNTRY
+  function addCountry(lat, lng, name, flag) {
+    L.marker([lat, lng], { icon: redIcon })
+      .addTo(map)
+      .bindPopup(`
+        <div style="text-align:center; min-width:120px;">
+          <div style="font-size:22px;">${flag}</div>
+          <div style="margin-top:6px; font-weight:600; color:#fff;">
+            ${name}
+          </div>
+        </div>
+      `);
+  }
 
-// 🇺🇸 USA
-L.marker([39.8283, -98.5795], { icon: redIcon }).addTo(map)
-  .bindPopup("United States");
+  // 🇺🇸 NORTH & SOUTH AMERICA / EUROPE / ASIA / OCEANIA
 
-// 🇳🇵 Nepal
-L.marker([28.3949, 84.1240], { icon: redIcon }).addTo(map)
-  .bindPopup("Nepal");
+  addCountry(39.8, -98.5, "United States", "🇺🇸");
+  addCountry(28.3, 84.1, "Nepal", "🇳🇵");
+  addCountry(23.6, -102.5, "Mexico", "🇲🇽");
+  addCountry(60.1, 18.6, "Sweden", "🇸🇪");
+  addCountry(51.9, 19.1, "Poland", "🇵🇱");
+  addCountry(30.3, 69.3, "Pakistan", "🇵🇰");
+  addCountry(35.1, 33.4, "Cyprus", "🇨🇾");
+  addCountry(1.3, 32.2, "Uganda", "🇺🇬");
 
-// 🇲🇽 Mexico
-L.marker([23.6345, -102.5528], { icon: redIcon }).addTo(map)
-  .bindPopup("Mexico");
+  // 🇮🇳 INDIA (FLAG ONLY — NO NAME)
+  L.marker([20.6, 78.9], { icon: redIcon })
+    .addTo(map)
+    .bindPopup(`<div style="font-size:22px;">🇮🇳</div>`);
 
-// 🇸🇪 Sweden
-L.marker([60.1282, 18.6435], { icon: redIcon }).addTo(map)
-  .bindPopup("Sweden");
-
-// 🇵🇱 Poland
-L.marker([51.9194, 19.1451], { icon: redIcon }).addTo(map)
-  .bindPopup("Poland");
-
-// 🇵🇰 Pakistan
-L.marker([30.3753, 69.3451], { icon: redIcon }).addTo(map)
-  .bindPopup("Pakistan");
-
-// 🇨🇾 Cyprus
-L.marker([35.1264, 33.4299], { icon: redIcon }).addTo(map)
-  .bindPopup("Cyprus");
-
-// 🇺🇬 Uganda
-L.marker([1.3733, 32.2903], { icon: redIcon }).addTo(map)
-  .bindPopup("Uganda");
-
-// 🇮🇳 India (NO NAME ON PIN TEXT)
-L.marker([20.5937, 78.9629], { icon: redIcon }).addTo(map)
-  .bindPopup("India");
-
-// 🇬🇹 Guatemala
-L.marker([15.7835, -90.2308], { icon: redIcon }).addTo(map)
-  .bindPopup("Guatemala");
-
-// 🇸🇻 El Salvador
-L.marker([13.7942, -88.8965], { icon: redIcon }).addTo(map)
-  .bindPopup("El Salvador");
-
-// 🇵🇪 Peru
-L.marker([-9.1900, -75.0152], { icon: redIcon }).addTo(map)
-  .bindPopup("Peru");
-
-// 🇨🇱 Chile
-L.marker([-35.6751, -71.5430], { icon: redIcon }).addTo(map)
-  .bindPopup("Chile");
-
-// 🇦🇷 Argentina
-L.marker([-38.4161, -63.6167], { icon: redIcon }).addTo(map)
-  .bindPopup("Argentina");
-
-// 🇰🇷 South Korea
-L.marker([35.9078, 127.7669], { icon: redIcon }).addTo(map)
-  .bindPopup("South Korea");
-
-// 🇳🇿 New Zealand
-L.marker([-40.9006, 174.8860], { icon: redIcon }).addTo(map)
-  .bindPopup("New Zealand");
+  addCountry(15.7, -90.2, "Guatemala", "🇬🇹");
+  addCountry(13.7, -88.8, "El Salvador", "🇸🇻");
+  addCountry(-9.1, -75.0, "Peru", "🇵🇪");
+  addCountry(-35
