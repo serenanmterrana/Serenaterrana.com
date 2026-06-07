@@ -41,6 +41,7 @@ function mapPosition(lat, lon) {
 function renderMap() {
   const map = document.querySelector("#worldMap");
   const tabs = document.querySelector("#nationTabs");
+  const select = document.querySelector("#nationSelect");
   if (!map || !tabs) return;
 
   nations.forEach((nation) => {
@@ -50,6 +51,7 @@ function renderMap() {
     pin.href = nationUrl(nation.slug);
     pin.style.left = pos.left;
     pin.style.top = pos.top;
+    pin.dataset.nation = nation.slug;
     pin.setAttribute("aria-label", nation.privateLabel ? "Open mission testimonies and gallery" : `Open ${nation.name} testimonies and gallery`);
     pin.innerHTML = `<span class="pin-dot"></span>${nation.privateLabel ? "" : `<span class="pin-label">${nation.flag} ${nation.name}</span>`}`;
     map.appendChild(pin);
@@ -59,6 +61,33 @@ function renderMap() {
     tab.className = nation.privateLabel ? "nation-tab private" : "nation-tab";
     tab.textContent = nation.privateLabel ? "Mission Testimonies + Gallery" : `${nation.flag} ${nation.name}`;
     tabs.appendChild(tab);
+
+    if (select) {
+      const option = document.createElement("option");
+      option.value = nationUrl(nation.slug);
+      option.textContent = nation.privateLabel ? "Mission Testimonies + Gallery" : `${nation.flag} ${nation.name}`;
+      select.appendChild(option);
+    }
+  });
+
+  select?.addEventListener("change", (event) => {
+    if (event.target.value) {
+      window.location.href = event.target.value;
+    }
+  });
+
+  map.addEventListener("click", (event) => {
+    const pin = event.target.closest(".map-pin");
+    if (!pin) return;
+
+    const isCoarsePointer = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    if (!isCoarsePointer) return;
+
+    if (!pin.classList.contains("is-active")) {
+      event.preventDefault();
+      map.querySelectorAll(".map-pin.is-active").forEach((activePin) => activePin.classList.remove("is-active"));
+      pin.classList.add("is-active");
+    }
   });
 }
 
