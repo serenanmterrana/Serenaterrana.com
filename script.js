@@ -56,12 +56,6 @@ function renderMap() {
     pin.innerHTML = `<span class="pin-dot"></span>${nation.privateLabel ? "" : `<span class="pin-label">${nation.flag} ${nation.name}</span>`}`;
     map.appendChild(pin);
 
-    const tab = document.createElement("a");
-    tab.href = nationUrl(nation.slug);
-    tab.className = nation.privateLabel ? "nation-tab private" : "nation-tab";
-    tab.textContent = nation.privateLabel ? "Mission Testimonies + Gallery" : `${nation.flag} ${nation.name}`;
-    tabs.appendChild(tab);
-
     if (select) {
       const option = document.createElement("option");
       option.value = nationUrl(nation.slug);
@@ -87,6 +81,12 @@ function renderMap() {
       event.preventDefault();
       map.querySelectorAll(".map-pin.is-active").forEach((activePin) => activePin.classList.remove("is-active"));
       pin.classList.add("is-active");
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".world-map")) {
+      map.querySelectorAll(".map-pin.is-active").forEach((activePin) => activePin.classList.remove("is-active"));
     }
   });
 }
