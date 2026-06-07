@@ -140,8 +140,8 @@ img {
   min-height: 92vh;
   position: relative;
   display: grid;
-  align-items: center;
-  padding: 8rem clamp(1rem, 6vw, 5rem) 5rem;
+  align-items: end;
+  padding: 8rem clamp(1rem, 6vw, 5rem) clamp(2rem, 5vh, 3.5rem);
   overflow: hidden;
   isolation: isolate;
 }
@@ -152,8 +152,8 @@ img {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(3, 4, 8, 0.94) 0%, rgba(3, 4, 8, 0.62) 45%, rgba(3, 4, 8, 0.18) 100%),
-    linear-gradient(0deg, #06070b 0%, transparent 34%);
+    linear-gradient(90deg, rgba(3, 4, 8, 0.7) 0%, rgba(3, 4, 8, 0.38) 46%, rgba(3, 4, 8, 0.12) 100%),
+    linear-gradient(0deg, rgba(6, 7, 11, 0.98) 0%, rgba(6, 7, 11, 0.78) 28%, transparent 68%);
 }
 
 .hero-photo {
@@ -196,16 +196,16 @@ img {
 }
 
 .hero-content {
-  max-width: 760px;
+  max-width: 650px;
 }
 
 .hero-content h1 {
-  max-width: 720px;
-  margin-bottom: 1.35rem;
+  max-width: 620px;
+  margin-bottom: 0.85rem;
   font-family: var(--heading-font);
-  font-size: clamp(2.85rem, 6.2vw, 6.15rem);
+  font-size: clamp(2.25rem, 4.6vw, 4.55rem);
   font-weight: 600;
-  line-height: 0.98;
+  line-height: 1.03;
   text-wrap: balance;
 }
 
@@ -1159,6 +1159,7 @@ button {
 
   .hero {
     min-height: 86vh;
+    padding-bottom: 2rem;
   }
 
   .stats-row {
@@ -1181,6 +1182,10 @@ button {
 
   h1 {
     font-size: clamp(2.45rem, 15vw, 4rem);
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.1rem, 10vw, 3.25rem);
   }
 
   .form-row {
