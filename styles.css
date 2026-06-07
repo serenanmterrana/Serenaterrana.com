@@ -163,7 +163,7 @@ img {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: cinematicFade 32s infinite;
+  animation: cinematicFade 24s infinite;
   transform: scale(1.08);
 }
 
@@ -179,10 +179,6 @@ img {
 .photo-three {
   background-image: url("images/IMG_6306.jpg");
   animation-delay: 8s;
-}
-.photo-four {
-  background-image: url("images/SLP_3097.JPG");
-  animation-delay: 16s;
 }
 
 @keyframes cinematicFade {
