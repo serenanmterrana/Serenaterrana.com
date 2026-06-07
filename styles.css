@@ -178,7 +178,7 @@ img {
 
 .photo-three {
   background-image: url("images/IMG_63062.jpg");
-  animation-delay: 8s;
+  animation-delay: 16s;
 }
 
 @keyframes cinematicFade {
