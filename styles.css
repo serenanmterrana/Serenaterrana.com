@@ -163,7 +163,7 @@ img {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: cinematicFade 24s infinite;
+  animation: cinematicFade 32s infinite;
   transform: scale(1.08);
 }
 
