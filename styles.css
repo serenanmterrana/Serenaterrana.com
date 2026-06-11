@@ -890,7 +890,7 @@ button {
   padding: 9rem clamp(1rem, 6vw, 5rem) 4rem;
   background:
     linear-gradient(90deg, rgba(4, 5, 9, 0.92), rgba(4, 5, 9, 0.42)),
-    url("images/In.png");
+    url("images/etsy background.png");
   background-size: cover;
   background-position: center;
 }
