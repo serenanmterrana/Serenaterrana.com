@@ -1357,14 +1357,13 @@ button {
     font-size: 1rem;
     letter-spacing: 0.1em;
   }
-}
 .nation-hero {
   align-items: start;
-  padding-top: 5.5rem;
-  padding-bottom: 3rem;
+  justify-items: end;
+  text-align: right;
+  padding-top: 6.5rem;
 }
 
 .nation-hero > div {
-  align-self: start;
-  margin-top: 1rem;
+  max-width: 760px;
 }
