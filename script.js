@@ -49,12 +49,12 @@ function renderMap() {
     pin.innerHTML = `<span class="pin-dot"></span>${nation.privateLabel ? "" : `<span class="pin-label">${nation.flag} ${nation.name}</span>`}`;
     map.appendChild(pin);
 
-    if (select) {
-      const option = document.createElement("option");
-      option.value = nationUrl(nation.slug);
-      option.textContent = nation.privateLabel ? "Mission Testimonies + Gallery" : `${nation.flag} ${nation.name}`;
-      select.appendChild(option);
-    }
+if (select && nation.slug !== "india") {
+  const option = document.createElement("option");
+  option.value = nationUrl(nation.slug);
+  option.textContent = nation.privateLabel ? "Mission Testimonies + Gallery" : `${nation.flag} ${nation.name}`;
+  select.appendChild(option);
+}
   });
 
   select?.addEventListener("change", (event) => {
