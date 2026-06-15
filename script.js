@@ -39,7 +39,9 @@ function renderMap() {
     const pin = document.createElement("a");
     const pos = mapPosition(nation.lat, nation.lon);
     pin.className = "map-pin";
-    pin.href = nationUrl(nation.slug);
+    if (nation.slug !== "india") {
+  pin.href = nationUrl(nation.slug);
+}
     pin.style.left = pos.left;
     pin.style.top = pos.top;
     pin.dataset.nation = nation.slug;
