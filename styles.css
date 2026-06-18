@@ -1372,9 +1372,11 @@ button {
     max-width: none !important;
 
 @media (max-width: 768px) {
-  .map-pin,
   .pin-dot {
-    width: 0.5rem;
-    height: 0.5rem;
+    background: blue !important;
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}
   }
 }
