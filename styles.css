@@ -1370,9 +1370,11 @@ button {
     right: 1rem !important;
     bottom: 1.5rem !important;
     max-width: none !important;
-  }
-  @media (max-width: 768px) {
-  .map-pin {
-    transform: translate(-50%, -50%) scale(0.3;
+
+@media (max-width: 768px) {
+  .map-pin,
+  .pin-dot {
+    width: 0.5rem;
+    height: 0.5rem;
   }
 }
