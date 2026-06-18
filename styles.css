@@ -1370,13 +1370,13 @@ button {
     right: 1rem !important;
     bottom: 1.5rem !important;
     max-width: none !important;
+  }
+}
 
 @media (max-width: 768px) {
   .pin-dot {
+    width: 0.5rem !important;
+    height: 0.5rem !important;
     background: blue !important;
-    width: 2rem !important;
-    height: 2rem !important;
-  }
-}
   }
 }
