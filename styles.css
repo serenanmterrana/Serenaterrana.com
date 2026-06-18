@@ -1375,12 +1375,12 @@ button {
 
 @media (max-width: 768px) {
   .map-pin {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: .5rem;
+    height: .5rem;
   }
 
   .pin-dot {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: .5rem;
+    height: .5rem;
   }
 }
