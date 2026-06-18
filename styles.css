@@ -1374,9 +1374,7 @@ button {
 }
 
 @media (max-width: 768px) {
-  .pin-dot {
-    width: 0.5rem !important;
-    height: 0.5rem !important;
-    background: blue !important;
+  .map-pin {
+    transform: translate(-50%, -50%) scale(0.5);
   }
 }
