@@ -32,10 +32,18 @@ function mapPosition(lat, lon) {
 function renderMap() {
   const map = document.querySelector("#worldMap");
   const tabs = document.querySelector("#nationTabs");
-  const select = document.querySelector("#nationSelect");
-  if (!map || !tabs) return;
+const select = document.querySelector("#nationSelect");
+if (!map || !tabs) return;
 
-  nations.forEach((nation) => {
+if (select) {
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Select one";
+  placeholder.selected = true;
+  placeholder.disabled = true;
+  select.appendChild(placeholder);
+}
+nations.forEach((nation) => {
     const pin = document.createElement("a");
     const pos = mapPosition(nation.lat, nation.lon);
     pin.className = "map-pin";
